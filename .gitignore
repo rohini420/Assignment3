@@ -1,5 +1,5 @@
 # Maven target directory
-target/
+# target/
 
 # IntelliJ IDEA and Eclipse project files
 .idea/
@@ -19,3 +19,5 @@ target/
 # OS-specific files
 Thumbs.db
 
+application.properties
+target/
