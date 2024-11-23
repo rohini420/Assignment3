@@ -27,7 +27,7 @@ pipeline {
          steps {
             script{
                docker.withRegistry('',registryCredential){
-                  def customImage = docker.build("rohini44/surveyapp:1.0:${env.TIMESTAMP}")
+                  def customImage = docker.build("rohini44/surveyapp:${env.TIMESTAMP}")
                }
             }
          }
@@ -37,7 +37,7 @@ pipeline {
          steps {
             script{
                docker.withRegistry('',registryCredential){
-                  sh "docker push rohini44/surveyapp:1.0:${env.TIMESTAMP}"
+                  sh "docker push rohini44/surveyapp:${env.TIMESTAMP}"
                }
             }
          }
@@ -45,7 +45,7 @@ pipeline {
       stage('Deploying to Rancher to single node(deployed in 3 replicas)') {
          steps {
             script{
-               sh "kubectl set image deployment/ass3-deployment container-0=rohini44/surveyapp:1.0:${env.TIMESTAMP} -n default"
+               sh "kubectl set image deployment/ass3-deployment container-0=rohini44/surveyapp:${env.TIMESTAMP} -n default"
             }
          }
       }
